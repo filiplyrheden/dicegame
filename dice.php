@@ -23,6 +23,10 @@ $score = $firstDice + $secondDice + $thirdDice;
             font-size: 40px;
             font-weight: bold;
         }
+
+        .alert {
+            color: red;
+        }
     </style>
 </head>
 
@@ -35,7 +39,7 @@ $score = $firstDice + $secondDice + $thirdDice;
 
     <br>
 
-    <p>
+    <p class="alert">
         <?php
 
         if ($score > 13)
@@ -44,7 +48,7 @@ $score = $firstDice + $secondDice + $thirdDice;
 
     </p>
 
-    <p>
+    <p class="alert">
         <?php
 
         if ($firstDice == $secondDice && $secondDice == $thirdDice)
