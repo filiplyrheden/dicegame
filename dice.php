@@ -4,6 +4,15 @@ $firstDice = mt_rand(1, 6);
 $secondDice = mt_rand(1, 6);
 $thirdDice = mt_rand(1, 6);
 $score = $firstDice + $secondDice + $thirdDice;
+$bonusScore = 0;
+
+if ($score > 13)
+    $bonusScore = +1;
+
+if ($firstDice == $secondDice && $secondDice == $thirdDice)
+    $bonusScore = +2;
+
+$totalScore = $score + $bonusScore; 
 
 ?>
 
@@ -26,20 +35,17 @@ $score = $firstDice + $secondDice + $thirdDice;
         <button type="submit" name="roll">Roll dice</button>
     </form>
     <br>
-    <p id="score">Score:<?= $score ?></p>
-
-    <br>
-
+    <p id="bonusscore">Bonus:<?= $bonusScore ?></p>
     <p class="alert">
         <?php
 
         if ($score > 13)
-            echo "Wow! Score of 14 points or more!"
+            echo "You scored 14 points or more!"
         ?>
 
     </p>
 
-    <p class="alert">
+      <p class="alert">
         <?php
 
         if ($firstDice == $secondDice && $secondDice == $thirdDice)
@@ -47,7 +53,7 @@ $score = $firstDice + $secondDice + $thirdDice;
 
         ?>
 
-    </p>
+<p id="score">Score:<?= $totalScore ?></p>
 
     <!-- <div class="dice first-dice">
         <span class="dot"> </span>
