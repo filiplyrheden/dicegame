@@ -1,0 +1,45 @@
+b {
+  font-size: 20px;
+}
+
+#score {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.alert {
+  color: red;
+}
+
+button {
+  background-color: red;
+  border: 2px solid #1a1a1a;
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 60px;
+}
+
+/* .dice {
+  padding: 4px;
+  background-color: white;
+  width: 104px;
+  height: 104px;
+  border: black solid 4px;
+  border-radius: 10%;
+}
+
+.dot {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.first-dice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */

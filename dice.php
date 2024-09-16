@@ -14,30 +14,7 @@ $score = $firstDice + $secondDice + $thirdDice;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dice</title>
-    <style>
-        b {
-            font-size: 20px;
-        }
-
-        #score {
-            font-size: 40px;
-            font-weight: bold;
-        }
-
-        .alert {
-            color: red;
-        }
-
-        button {
-            background-color: red;
-            border: 2px solid #1A1A1A;
-            border-radius: 15px;
-            color: #FFFFFF;
-            font-size: 16px;
-            font-weight: 600;
-            min-height: 60px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -71,6 +48,10 @@ $score = $firstDice + $secondDice + $thirdDice;
         ?>
 
     </p>
+
+    <!-- <div class="dice first-dice">
+        <span class="dot"> </span>
+    </div> -->
 
 </body>
 
