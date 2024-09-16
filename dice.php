@@ -27,6 +27,16 @@ $score = $firstDice + $secondDice + $thirdDice;
         .alert {
             color: red;
         }
+
+        button {
+            background-color: red;
+            border: 2px solid #1A1A1A;
+            border-radius: 15px;
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: 600;
+            min-height: 60px;
+        }
     </style>
 </head>
 
@@ -34,6 +44,10 @@ $score = $firstDice + $secondDice + $thirdDice;
     <p>Dice one: <b><?= $firstDice ?></b></p>
     <p>Dice two: <b><?= $secondDice ?></b></p>
     <p>Dice three: <b><?= $thirdDice ?></b></p>
+    <br>
+    <form method="POST">
+        <button type="submit" name="roll">Roll dice</button>
+    </form>
     <br>
     <p id="score">Score:<?= $score ?></p>
 
