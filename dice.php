@@ -6,11 +6,29 @@ $thirdDice = mt_rand(1, 6);
 $score = $firstDice + $secondDice + $thirdDice;
 $bonusScore = 0;
 
+function checkStraight($diceRolls) {
+    
+    sort($diceRolls);
+
+    for ($i = 1; $i < count($diceRolls); $i++) {
+        if ($diceRolls[$i] != $diceRolls[$i - 1] + 1) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+$diceRolls = [$firstDice, $secondDice, $thirdDice];
+
 if ($score > 13)
-    $bonusScore = +1;
+    $bonusScore += 1;
 
 if ($firstDice == $secondDice && $secondDice == $thirdDice)
-    $bonusScore = +2;
+    $bonusScore += 2;
+
+if (checkStraight($diceRolls))
+    $bonusScore += 3;
 
 $totalScore = $score + $bonusScore; 
 
@@ -52,6 +70,16 @@ $totalScore = $score + $bonusScore;
             echo "Three pairs!";
 
         ?>
+
+<p class="alert">
+
+        <?php
+
+        if (checkStraight($diceRolls)) 
+            echo "It's a straight!";
+
+        ?>
+    </p>
 
 <p id="score">Score:<?= $totalScore ?></p>
 
