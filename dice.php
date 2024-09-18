@@ -6,8 +6,9 @@ $thirdDice = mt_rand(1, 6);
 $score = $firstDice + $secondDice + $thirdDice;
 $bonusScore = 0;
 
-function checkStraight($diceRolls) {
-    
+function checkStraight($diceRolls)
+{
+
     sort($diceRolls);
 
     for ($i = 1; $i < count($diceRolls); $i++) {
@@ -30,7 +31,7 @@ if ($firstDice == $secondDice && $secondDice == $thirdDice)
 if (checkStraight($diceRolls))
     $bonusScore += 3;
 
-$totalScore = $score + $bonusScore; 
+$totalScore = $score + $bonusScore;
 
 ?>
 
@@ -63,7 +64,7 @@ $totalScore = $score + $bonusScore;
 
     </p>
 
-      <p class="alert">
+    <p class="alert">
         <?php
 
         if ($firstDice == $secondDice && $secondDice == $thirdDice)
@@ -71,21 +72,33 @@ $totalScore = $score + $bonusScore;
 
         ?>
 
-<p class="alert">
+    <p class="alert">
 
         <?php
 
-        if (checkStraight($diceRolls)) 
+        if (checkStraight($diceRolls))
             echo "It's a straight!";
 
         ?>
     </p>
 
-<p id="score">Score:<?= $totalScore ?></p>
+    <p id="score">Score:<?= $totalScore ?></p>
 
-    <!-- <div class="dice first-dice">
+    <div class="dice first-dice">
         <span class="dot"> </span>
-    </div> -->
+    </div>
+
+
+    <div class="dice second-dice">
+        <span class="dot" id="dot-2-1"> </span>
+        <span class="dot" id="dot-2-2"> </span>
+    </div>
+
+    <div class="dice third-dice">
+        <span class="dot" id="dot-3-1"> </span>
+        <span class="dot" id="dot-3-2"> </span>
+        <span class="dot" id="dot-3-3"> </span>
+    </div>
 
 </body>
 
