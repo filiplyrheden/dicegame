@@ -33,6 +33,34 @@ if (checkStraight($diceRolls))
 
 $totalScore = $score + $bonusScore;
 
+if (isset($_POST['play_computer'])) {
+    $computerFirstDice = mt_rand(1, 6);
+    $computerSecondDice = mt_rand(1, 6);
+    $computerThirdDice = mt_rand(1, 6);
+    $computerScore = $computerFirstDice + $computerSecondDice + $computerThirdDice;
+    $computerBonusScore = 0;
+    $computerDiceRolls = [$computerFirstDice, $computerSecondDice, $computerThirdDice];
+
+    if ($computerScore > 13)
+        $computerBonusScore += 1;
+
+    if ($computerFirstDice == $computerSecondDice && $computerSecondDice == $computerThirdDice)
+        $computerBonusScore += 2;
+
+    if (checkStraight($computerDiceRolls))
+        $computerBonusScore += 3;
+
+    $computerTotalScore = $computerScore + $computerBonusScore;
+
+    if ($totalScore > $computerTotalScore) {
+        $resultMessage = "You win!";
+    } elseif ($totalScore < $computerTotalScore) {
+        $resultMessage = "Computer wins!";
+    } else {
+        $resultMessage = "It's a tie!";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -46,15 +74,14 @@ $totalScore = $score + $bonusScore;
 </head>
 
 <body>
+    <form method="POST">
+        <button type="submit" name="roll" class="button-1">Play yourself</button>
+        <button type="submit" name="play_computer" class="button-2">Play against computer</button>
+    </form>
     <p>Dice one: <b><?= $firstDice ?></b></p>
     <p>Dice two: <b><?= $secondDice ?></b></p>
     <p>Dice three: <b><?= $thirdDice ?></b></p>
     <br>
-    <form method="POST">
-        <button type="submit" name="roll">Roll dice</button>
-    </form>
-    <br>
-    <p id="bonusscore">Bonus:<?= $bonusScore ?></p>
     <p class="alert">
         <?php
 
@@ -82,12 +109,24 @@ $totalScore = $score + $bonusScore;
         ?>
     </p>
 
-    <p id="score">Score:<?= $totalScore ?></p>
+    <p id="bonusscore">Bonus: <?= $bonusScore ?></p>
+    <p class="score">Your points: <?= $totalScore ?></p>
 
+    <?php if (isset($resultMessage)) : ?>
+        <p><b>Computer rolled:</b></p>
+        <p>Dice one: <b><?= $computerFirstDice ?></b></p>
+        <p>Dice two: <b><?= $computerSecondDice ?></b></p>
+        <p>Dice three: <b><?= $computerThirdDice ?></b></p>
+        <br>
+        <p>Computer bonus: <?= $computerBonusScore ?></p>
+        <p class="score">Computer points: <?= $computerTotalScore ?></p>
+        <h2>Result: <?= $resultMessage ?></h2>
+    <?php endif; ?>
+
+    <!--
     <div class="dice first-dice">
         <span class="dot"> </span>
     </div>
-
 
     <div class="dice second-dice">
         <span class="dot" id="dot-2-1"> </span>
@@ -99,6 +138,7 @@ $totalScore = $score + $bonusScore;
         <span class="dot" id="dot-3-2"> </span>
         <span class="dot" id="dot-3-3"> </span>
     </div>
+    -->
 
 </body>
 
